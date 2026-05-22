@@ -12,4 +12,4 @@ COPY --from=build /app/dist/runTracker/browser ./dist
 
 EXPOSE 4200
 
-CMS ["npx", "server" , "dist", "-p", "4200"]
+CMD ["npx", "server" , "dist", "-p", "4200"]
