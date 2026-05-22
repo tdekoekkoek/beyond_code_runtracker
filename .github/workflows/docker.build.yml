@@ -50,3 +50,13 @@ jobs:
                   name: runtracker-docker-image
                   path: /tmp/runtracker-image.tar
                   retention-days: 7
+
+            -   name: Build and push Docker image
+                uses: docker/build-push-action@v5
+                with:
+                    context: .
+                    file: ./Containerfile
+                    push: true
+                    tags: |
+                        ${{ secrets.ACR_NAME }}.azurecr.io/runtracker-tdk:${{ github.sha }}
+                        ${{ secrets.ACR_NAME }}.azurecr.io/runtracker-tdk:latest
